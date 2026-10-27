@@ -10,6 +10,8 @@
 
 # HideNotch — Hide the MacBook Notch
 
+Licensed under the GNU General Public License v3.0 only. See [LICENSE](LICENSE).
+
 Paints the strip behind the built-in display's menu bar black. The translucent menu bar samples
 that black and turns fully black, so the physical notch (itself black) blends in and visually
 disappears — while the rest of your desktop stays light. Keep Light Mode during the day without

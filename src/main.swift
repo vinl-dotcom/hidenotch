@@ -10,6 +10,7 @@
 //
 // 这是一个常驻后台 agent（LSUIElement，无 Dock / 无窗口），监听换壁纸、切 Space、
 // 插拔显示器等事件并自动重新涂黑——这正是市面同类软件容易"失效"的原因。
+// SPDX-License-Identifier: GPL-3.0-only
 
 import Cocoa
 
