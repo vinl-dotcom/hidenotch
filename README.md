@@ -14,9 +14,10 @@ Licensed under the GNU General Public License v3.0 only. See [LICENSE](LICENSE).
 
 ## Download a release
 
-Download the universal macOS ZIP from [Releases](https://github.com/vinl-dotcom/hidenotch/releases),
+Download the Apple Silicon macOS ZIP from [Releases](https://github.com/vinl-dotcom/hidenotch/releases),
 unzip `HideNotch.app` into `~/Applications`, then use Finder's **Open** action the first time to
 approve the app. Run `bash install-agent.sh` from this source folder to enable launch at login.
+HideNotch requires a Mac with a built-in notch and Apple Silicon; Intel Macs do not have a notch.
 
 Release archives are currently ad-hoc signed and are not notarized. macOS may show an extra
 first-launch warning. Developer ID signing and notarization are needed for the standard

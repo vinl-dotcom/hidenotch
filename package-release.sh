@@ -1,5 +1,5 @@
 #!/bin/bash
-# Build a universal macOS app archive for GitHub Releases.
+# Build an Apple Silicon macOS app archive for GitHub Releases.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
@@ -13,13 +13,8 @@ APP_DIR="$BUILD_DIR/$APP_NAME.app"
 rm -rf "$BUILD_DIR"
 mkdir -p "$APP_DIR/Contents/MacOS"
 
-for ARCH in arm64 x86_64; do
-    xcrun swiftc -O -target "$ARCH-apple-macos12.0" \
-        "$ROOT/src/main.swift" -o "$BUILD_DIR/$APP_NAME-$ARCH" -framework Cocoa
-done
-
-lipo -create "$BUILD_DIR/$APP_NAME-arm64" "$BUILD_DIR/$APP_NAME-x86_64" \
-    -output "$APP_DIR/Contents/MacOS/$APP_NAME"
+xcrun swiftc -O -target "arm64-apple-macos12.0" \
+    "$ROOT/src/main.swift" -o "$APP_DIR/Contents/MacOS/$APP_NAME" -framework Cocoa
 
 cat > "$APP_DIR/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,6 +31,8 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
     <key>LSMinimumSystemVersion</key>        <string>12.0</string>
     <key>LSUIElement</key>                   <true/>
     <key>NSHighResolutionCapable</key>       <true/>
+    <key>LSArchitecturePriority</key>
+    <array><string>arm64</string></array>
 </dict>
 </plist>
 PLIST
@@ -43,7 +40,6 @@ PLIST
 # Ad-hoc signing keeps the app bundle structurally valid; it is not Developer ID notarization.
 codesign --force --deep --sign - "$APP_DIR"
 ditto -c -k --norsrc --keepParent "$APP_DIR" \
-    "$BUILD_DIR/$APP_NAME-$RELEASE_TAG-universal-macos.zip"
-rm "$BUILD_DIR/$APP_NAME-arm64" "$BUILD_DIR/$APP_NAME-x86_64"
+    "$BUILD_DIR/$APP_NAME-$RELEASE_TAG-macos-arm64.zip"
 
-echo "Created $BUILD_DIR/$APP_NAME-$RELEASE_TAG-universal-macos.zip"
+echo "Created $BUILD_DIR/$APP_NAME-$RELEASE_TAG-macos-arm64.zip"

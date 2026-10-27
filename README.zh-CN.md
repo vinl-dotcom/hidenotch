@@ -14,9 +14,10 @@
 
 ## 下载发行版
 
-从 [Releases](https://github.com/vinl-dotcom/hidenotch/releases) 下载通用版 macOS ZIP，解压后
+从 [Releases](https://github.com/vinl-dotcom/hidenotch/releases) 下载 Apple Silicon 版 macOS ZIP，解压后
 将 `HideNotch.app` 放入 `~/Applications`。首次运行时，在 Finder 中对应用点按右键并选择“打开”以确认。
 然后在源码目录运行 `bash install-agent.sh`，即可启用登录时自动启动。
+HideNotch 需要带刘海的 Apple Silicon Mac；Intel Mac 没有刘海。
 
 目前发行包使用临时签名，尚未经过 Apple 公证，首次打开时 macOS 可能显示额外提示。
 要实现常规下载后直接打开的体验，需要 Developer ID 签名和公证。
