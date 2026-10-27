@@ -25,8 +25,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ github.ref_name }}
         run: |
-          gh release create "$VERSION" \
-            "dist/HideNotch-$VERSION-universal-macos.zip" \
-            --repo "$GITHUB_REPOSITORY" \
-            --title "HideNotch $VERSION" \
-            --generate-notes
+          ARCHIVE="dist/HideNotch-$VERSION-universal-macos.zip"
+          if gh release view "$VERSION" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$VERSION" "$ARCHIVE" \
+              --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$VERSION" "$ARCHIVE" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "HideNotch $VERSION" \
+              --generate-notes
+          fi
