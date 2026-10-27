@@ -3,7 +3,7 @@
 [![English](https://img.shields.io/badge/README-English-lightgrey?style=for-the-badge)](README.md)
 [![中文](https://img.shields.io/badge/README-中文-d33?style=for-the-badge)](README.zh-CN.md)
 
-![Version](https://img.shields.io/badge/version-1.1-2ea44f?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2-2ea44f?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/macOS-12%2B-555?style=for-the-badge&logo=apple)
 
 </div>
@@ -11,6 +11,15 @@
 # HideNotch — 隐藏 MacBook 刘海
 
 本项目采用 GNU GPL 第 3 版（GPL-3.0-only）授权，详见 [LICENSE](LICENSE)。
+
+## 下载发行版
+
+从 [Releases](https://github.com/vinl-dotcom/hidenotch/releases) 下载通用版 macOS ZIP，解压后
+将 `HideNotch.app` 放入 `~/Applications`。首次运行时，在 Finder 中对应用点按右键并选择“打开”以确认。
+然后在源码目录运行 `bash install-agent.sh`，即可启用登录时自动启动。
+
+目前发行包使用临时签名，尚未经过 Apple 公证，首次打开时 macOS 可能显示额外提示。
+要实现常规下载后直接打开的体验，需要 Developer ID 签名和公证。
 
 把内置屏菜单栏背后那条区域涂黑。半透明的菜单栏采样到黑色后整条变黑，物理刘海（本身是黑的）
 融入其中、视觉上消失；而桌面其余部分保持浅色——白天照常用浅色模式，不用切深色主题。

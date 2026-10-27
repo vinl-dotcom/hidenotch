@@ -1,0 +1,32 @@
+name: Build macOS release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build universal app archive
+        env:
+          VERSION: ${{ github.ref_name }}
+        run: ./package-release.sh
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ github.ref_name }}
+        run: |
+          gh release create "$VERSION" \
+            "dist/HideNotch-$VERSION-universal-macos.zip" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "HideNotch $VERSION" \
+            --generate-notes

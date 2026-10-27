@@ -3,7 +3,7 @@
 [![English](https://img.shields.io/badge/README-English-2563eb?style=for-the-badge)](README.md)
 [![中文](https://img.shields.io/badge/README-中文-lightgrey?style=for-the-badge)](README.zh-CN.md)
 
-![Version](https://img.shields.io/badge/version-1.1-2ea44f?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2-2ea44f?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/macOS-12%2B-555?style=for-the-badge&logo=apple)
 
 </div>
@@ -11,6 +11,16 @@
 # HideNotch — Hide the MacBook Notch
 
 Licensed under the GNU General Public License v3.0 only. See [LICENSE](LICENSE).
+
+## Download a release
+
+Download the universal macOS ZIP from [Releases](https://github.com/vinl-dotcom/hidenotch/releases),
+unzip `HideNotch.app` into `~/Applications`, then use Finder's **Open** action the first time to
+approve the app. Run `bash install-agent.sh` from this source folder to enable launch at login.
+
+Release archives are currently ad-hoc signed and are not notarized. macOS may show an extra
+first-launch warning. Developer ID signing and notarization are needed for the standard
+uninterrupted download experience.
 
 Paints the strip behind the built-in display's menu bar black. The translucent menu bar samples
 that black and turns fully black, so the physical notch (itself black) blends in and visually
